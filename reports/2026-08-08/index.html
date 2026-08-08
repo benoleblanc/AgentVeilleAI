@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>IA 2026 : la vidéo native audio s&#39;impose, l&#39;AI Act mord pour de vrai et les agents de code fusionnent — Veille IA Hebdomadaire</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cette semaine : HappyHorse 1.1 bouscule la vidéo IA, l&#39;AI Act européen entre en phase de sanctions, et Claude/Codex collaborent enfin sur le code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>/* ==========================================================================
+   Agent de Veille IA Hebdomadaire — style &#34;magazine&#34; (web)
+   ========================================================================== */
+
+:root {
+  --bg: #f7f5f0;
+  --bg-card: #ffffff;
+  --ink: #1b1b1f;
+  --ink-soft: #52525b;
+  --accent: #6a3df5;
+  --accent-soft: #efe9ff;
+  --line: #e6e2d8;
+  --success: #0f8a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114;
+    --bg-card: #1a1a1f;
+    --ink: #f2f1ee;
+    --ink-soft: #a3a3ad;
+    --accent: #a78bfa;
+    --accent-soft: #241c3d;
+    --line: #2c2c33;
+    --success: #34d399;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: &#34;Inter&#34;, &#34;Segoe UI&#34;, system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: &#34;Fraunces&#34;, Georgia, &#34;Times New Roman&#34;, serif;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.6rem;
+}
+
+.site-header p {
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* --- Cartes d&#39;archive (index) ------------------------------------------ */
+
+.archive-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.report-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.report-card .date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.report-card h2 {
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.report-card p {
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.report-card .links a {
+  font-weight: 600;
+  margin-right: 1.25rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 4rem 1rem;
+}
+
+/* --- Page d&#39;un rapport --------------------------------------------------- */
+
+.report-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.report-content h2 {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.report-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  color: var(--accent);
+}
+
+.report-content h4 {
+  font-size: 1.02rem;
+  margin-top: 1.4rem;
+}
+
+.report-content p { margin: 0.9rem 0; }
+
+.report-content ul, .report-content ol {
+  padding-left: 1.4rem;
+}
+
+.report-content li { margin: 0.35rem 0; }
+
+.report-content blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1.2rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+}
+
+.report-content blockquote p { margin: 0; }
+
+.report-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+
+.report-content th, .report-content td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+
+.report-content th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.report-content code {
+  background: var(--accent-soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.88em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.pdf-badge {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.pdf-badge:hover { text-decoration: none; opacity: 0.9; }
+
+footer.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a class="back-link" href="../../index.html">&larr; Retour à l'archive</a>
+
+
+
+  <header>
+    <div class="date">8 août 2026</div>
+    <h1>IA 2026 : la vidéo native audio s&#39;impose, l&#39;AI Act mord pour de vrai et les agents de code fusionnent</h1>
+    <p class="report-meta">Cette semaine : HappyHorse 1.1 bouscule la vidéo IA, l&#39;AI Act européen entre en phase de sanctions, et Claude/Codex collaborent enfin sur le code.<br>Taux utilisés : 1 USD = 1.3952 CAD · 1 EUR = 1.6123 CAD</p>
+  </header>
+
+
+  <div class="report-content">
+    <h2 id="section-1-etat-de-la-situation">SECTION 1 : ÉTAT DE LA SITUATION</h2>
+<h3 id="1-creation-multimedia-video-image-audio">1. Création Multimédia (Vidéo, Image &amp; Audio)</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>La génération vidéo par IA a franchi un cap technique majeur en 2026 : l'audio natif synchronisé (dialogues, bruitages, musique) généré dans le même processus de diffusion que l'image, sans étape de post-production séparée. Cette approche, popularisée par Google Veo 3.1, est désormais la norme chez les leaders du secteur (Kling 3.0, HappyHorse, Seedance). Autre tendance de fond : la sortie d'OpenAI du marché grand public de la vidéo (fermeture de l'app Sora et de son API prévue le 24 septembre 2026), qui a laissé le champ libre aux acteurs chinois (Alibaba, ByteDance) et à Google. Pour l'audio et la voix, ElevenLabs demeure la référence pour le clonage vocal multilingue, utilisé massivement en podcast et doublage.</p>
+<p><strong>Palmarès du moment — Top 3</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Points forts</th>
+<th>Tarif (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Google Veo 3.1</strong></td>
+<td>Audio natif le plus abouti, qualité cinématographique</td>
+<td>Inclus dans Google AI Ultra — tarifs variables selon abonnement</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Kling 3.0 / Kling Video O3</strong></td>
+<td>Meilleur équilibre scènes dynamiques + clips 10s, fidélité visuelle maximale</td>
+<td>Selon crédits, plateforme Kuaishou</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Runway (Gen-4.5)</strong></td>
+<td>Référence pour le contrôle caméra et le montage génératif professionnel</td>
+<td>15-95 $ USD/mois → <strong>20,93 à 132,54 CAD/mois</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Mention spéciale audio : <strong>ElevenLabs</strong> reste indétrônable pour la voix off multilingue et le clonage vocal (version gratuite disponible, plans payants variables).</p>
+</blockquote>
+<hr />
+<h3 id="2-developpement-codage-integrations">2. Développement, Codage &amp; Intégrations</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>L'écosystème des agents de code s'est stabilisé autour de trois familles d'usage : les IDE natifs IA (Cursor, Windsurf) pour le flux quotidien, les agents terminal (Claude Code) pour les refactors complexes, et les agents asynchrones (Codex, Devin) pour les tâches déléguées. La grande nouveauté conceptuelle de la période est l'interopérabilité : les outils cessent de se livrer une guerre d'exclusivité et commencent à collaborer entre eux. <strong>Aucune interface ou support natif en français n'a été détecté cette semaine</strong> pour les principaux agents de code (Cursor, Claude Code, GitHub Copilot, Codex demeurent anglophones par défaut, avec traduction communautaire partielle uniquement pour Copilot dans VS Code).</p>
+<p><strong>Palmarès du moment — Top 3</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Idéal pour</th>
+<th>Tarif (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Cursor</strong></td>
+<td>IDE agentique le plus mature, complétion + chat + édition multi-fichiers</td>
+<td>Gratuit / 20 $ / 60 $ / 200 $ USD → <strong>Gratuit / 27,90 / 83,71 / 279,04 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Claude Code (Anthropic)</strong></td>
+<td>Refactors architecturaux, contexte 1M tokens, agent terminal le plus intelligent</td>
+<td>20-30 € via Claude Pro/Max → <strong>32,25 à 48,37 CAD/mois</strong> (Max : 100-200 $ USD → <strong>139,52-279,04 CAD</strong>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>GitHub Copilot</strong></td>
+<td>Intégration IDE native (VS Code, JetBrains), meilleur rapport qualité-prix</td>
+<td>10-19 € /mois → <strong>16,12 à 30,63 CAD/mois</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-productivite-recherche">3. Productivité &amp; Recherche</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>Le paysage se structure autour de deux usages complémentaires : les assistants conversationnels généralistes (ChatGPT, Gemini, Claude) pour la synthèse documentaire et la rédaction, et les moteurs de recherche IA sourcés (Perplexity) pour la vérification factuelle. Perplexity s'impose comme le « gold standard » de la recherche IA vérifiable, avec citation systématique des sources — un avantage net face à ChatGPT, plus opaque sur ce point. Mistral (Vibe, ex-Le Chat) continue de se positionner comme l'alternative souveraine européenne, avec hébergement RGPD.</p>
+<p><strong>Palmarès du moment — Top 3</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Points forts</th>
+<th>Tarif (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Perplexity</strong></td>
+<td>Recherche sourcée, Deep Research, désormais étendu à un agent « Personal Computer »</td>
+<td>Gratuit / Pro variable</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ChatGPT (avec Deep Research)</strong></td>
+<td>Polyvalence, analyse de documents/tableurs, intégration Sora</td>
+<td>Gratuit / Plus 20 $ USD → <strong>27,90 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Notion AI</strong></td>
+<td>Gestion de contenu et organisation intégrée au workspace</td>
+<td>Inclus dans plans Notion payants</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4-agents-creation-dautomatisations">4. Agents &amp; Création d'automatisations</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>L'automatisation no-code/low-code se structure en deux couches : les plateformes de workflows classiques (Zapier, Make, n8n) qui gèrent les tâches prévisibles, et une nouvelle couche d'agents IA capables de jugement contextuel (triage, décision, rédaction). n8n s'impose auprès des équipes techniques grâce à son moteur open-source et sa flexibilité JavaScript/Python, tandis que Zapier reste la référence pour la couverture d'intégrations (plus de 2000 apps).</p>
+<p><strong>Palmarès du moment — Top 3</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Meilleur pour</th>
+<th>Tarif (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>n8n</strong></td>
+<td>Équipes techniques, auto-hébergement, plus de 230 000 utilisateurs actifs</td>
+<td>24 $ USD/mois (cloud) → <strong>33,48 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Zapier (+ AI Builder)</strong></td>
+<td>Couverture d'intégrations maximale, agents no-code</td>
+<td>19,99 $ USD/mois → <strong>27,89 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Make (ex-Integromat)</strong></td>
+<td>Workflows visuels complexes, alternative économique à Zapier</td>
+<td>9 $ USD/mois → <strong>12,56 CAD/mois</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="5-ecriture-naturelle-ecrire-comme-un-humain-prompts-cles">5. Écriture naturelle ("Écrire comme un humain") &amp; Prompts clés</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>La demande pour du texte IA indétectable explose, portée par deux besoins opposés : les créateurs de contenu qui veulent éviter le « ton robotique », et les institutions académiques qui cherchent à détecter ce même contenu. Claude (Anthropic) est reconnu de façon quasi unanime comme le modèle produisant le texte le plus naturel, avec un meilleur contrôle du ton et moins de « remplissage corporatif » que ChatGPT. Les outils d'humanisation dédiés (Walter Writes, Decopy, Monica) se multiplient mais restent des rustines plutôt qu'une solution de fond — la vraie clé reste le prompt et l'édition humaine.</p>
+<p><strong>Palmarès du moment — Top 3</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Points forts</th>
+<th>Tarif (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Claude Pro (Anthropic)</strong></td>
+<td>Ton le plus naturel, excelle en écriture créative et respect du style</td>
+<td>20 $ USD/mois → <strong>27,90 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ChatGPT Plus</strong></td>
+<td>Excellent pour contenu structuré nécessitant recherche</td>
+<td>20 $ USD/mois → <strong>27,90 CAD/mois</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Walter Writes AI</strong></td>
+<td>Humaniseur spécialisé, scores élevés sur Turnitin/GPTZero/Originality</td>
+<td>Freemium</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Prompt clé pour écrire « comme un humain » avec Claude :</strong><br />
+<code>Écris ce texte comme si tu étais [profession/personnalité], avec un ton
+conversationnel. Varie la longueur des phrases (mélange courtes et longues),
+évite les transitions formelles ("de plus", "en outre", "par ailleurs"),
+utilise un vocabulaire simple sauf quand la précision technique l'exige,
+et n'aie pas peur des phrases incomplètes ou des apartés personnels.
+Ne conclus jamais par un résumé de type "en somme" ou "pour conclure".</code></p>
+</blockquote>
+<hr />
+<h3 id="6-actualites-tendances-etat-de-la-situation">6. Actualités, Tendances &amp; État de la situation</h3>
+<p><strong>Briefing de mise à niveau</strong></p>
+<p>Le marché mondial de l'IA est évalué à environ 244 milliards USD en 2025, avec une projection dépassant 500 milliards USD dès 2028 (certaines sources évoquent même 2 673 milliards USD d'ici 2035). La tendance de fond dominante en 2026 est le passage de l'expérimentation à la gouvernance : l'IA agentique devient la norme en entreprise, mais elle s'accompagne d'une vague réglementaire sans précédent avec l'AI Act européen. Autre signal fort : 72 % des entreprises ont intégré l'IA dans au moins une fonction, et l'IA générative rendrait les développeurs 55 % plus rapides selon McKinsey.</p>
+<p><strong>Palmarès du moment — Top 3 (modèles frontière, classement Artificial Analysis)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Modèle</th>
+<th>Force distinctive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Claude Opus 5 (Anthropic)</strong></td>
+<td>Tête du classement mondial Artificial Analysis</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>GPT-5.6-Sol (OpenAI)</strong></td>
+<td>Performance agentique de pointe</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Gemini 3 Pro (Google)</strong></td>
+<td>Multimodalité et intégration Google Workspace</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="section-2-nouveautes-de-la-semaine">SECTION 2 : NOUVEAUTÉS DE LA SEMAINE</h2>
+<h3 id="1-creation-multimedia-video-image-audio_1">1. Création Multimédia (Vidéo, Image &amp; Audio)</h3>
+<ul>
+<li><strong>Seedance 2.5 (ByteDance)</strong> est officiellement sorti cette semaine : il génère des clips natifs de <strong>30 secondes en un seul passage</strong>, sans « stitching », avec jusqu'à <strong>50 références multimodales</strong> (images, sons, vidéos) pour garder une cohérence de personnages et de scènes. Retouches locales précises sans régénération complète.</li>
+<li><strong>Arcads</strong> propose une génération illimitée pendant 72 heures sur Seedance 2.5 pour les créateurs souhaitant tester le nouveau modèle.</li>
+<li><strong>MiniMax H3</strong>, modèle vidéo open source, combine texte/image/vidéo/audio pour produire des clips 2K jusqu'à 15 secondes avec son stéréo natif généré dans la même passe.</li>
+<li><strong>AI Act européen (2 août 2026)</strong> : toutes les images, vidéos, sons et textes générés par IA doivent désormais intégrer un marquage technique traçable (watermark ou métadonnées), sans nécessairement afficher une mention visible pour l'utilisateur final. Impact direct sur les workflows de production de contenu multimédia en Europe.</li>
+<li><strong>Fin de Sora</strong> confirmée : OpenAI a arrêté ses applications web/mobile le 26 avril 2026 et fermera l'API le <strong>24 septembre 2026</strong>. La génération vidéo reste disponible uniquement comme fonctionnalité dans ChatGPT Plus/Pro.</li>
+</ul>
+<hr />
+<h3 id="2-developpement-codage-integrations_1">2. Développement, Codage &amp; Intégrations</h3>
+<ul>
+<li><strong>Agent Plugins 1.0.0</strong> (6 août 2026) : un nouveau standard ouvert et neutre pour empaqueter des extensions d'agents de codage IA dans un dossier unique lisible par plusieurs clients (Claude Code, Codex, etc.), via un manifeste <code>plugin.json</code>. Une avancée majeure pour l'interopérabilité des outils.</li>
+<li><strong>OpenAI ↔ Anthropic</strong> : OpenAI a publié un plugin permettant aux utilisateurs de <strong>Claude Code d'intégrer Codex directement</strong> dans leur environnement — Codex peut relire le code de Claude ou prendre le relais en cas de blocage. Signal fort d'un changement de paradigme vers la collaboration inter-outils plutôt que l'exclusivité.</li>
+<li><strong>Claude Code</strong> a annoncé un nouveau rendu d'interface terminal (variable d'environnement <code>CLAUDECODENOFLICKER=1</code>) pour corriger le scintillement, avec support complet de la souris.</li>
+<li>🇫🇷 <strong>Aucune annonce de support ou interface en français</strong> n'a été identifiée cette semaine pour les principaux agents de code (Cursor, Claude Code, Copilot, Codex restent en anglais par défaut).</li>
+<li><strong>ZCode</strong> (Z.ai), agent de codage agentique gratuit propulsé par GLM-5.2, a connu sa semaine de lancement avec des retours mitigés mais un positionnement clair sur le marché open-source.</li>
+</ul>
+<hr />
+<h3 id="3-productivite-recherche_1">3. Productivité &amp; Recherche</h3>
+<ul>
+<li><strong>Perplexity Personal Computer</strong> : lancement cette semaine d'un projet transformant le Mac mini d'Apple en assistant IA personnel façon J.A.R.V.I.S. — l'ordinateur de bureau inutilisé devient le support d'un agent autonome.</li>
+<li><strong>Perplexity Computer/Brain</strong> : nouvelle fonctionnalité de mémoire orientée performance plutôt qu'engagement — le système apprend des recherches répétées (ex. : audits de pipeline hebdomadaires) pour éliminer les sources mortes et raccourcir les itérations futures.</li>
+<li><strong>Google Maps</strong> intègre désormais un agent conversationnel vocal dans plus de 160 pays, capable de rechercher un restaurant ou réserver une table pendant la navigation.</li>
+<li>Tension croissante entre médias et Google autour des résumés IA dans Search : plusieurs médias publient des guides pour désactiver cette fonctionnalité, jugée nuisible au trafic.</li>
+</ul>
+<hr />
+<h3 id="4-agents-creation-dautomatisations_1">4. Agents &amp; Création d'automatisations</h3>
+<ul>
+<li><strong>AWS Bedrock AgentCore</strong> enrichi de nouveaux connecteurs (SharePoint, Confluence, Google Drive, Amazon S3) et d'une capacité de navigation web sécurisée intégrée au périmètre client.</li>
+<li><strong>Microsoft Scout</strong>, agent d'arrière-plan autonome ("background Autopilot agent"), fait partie des nouveaux outils repérés cette semaine dans le tracker de lancements agentiques.</li>
+<li><strong>Anthropic Claude Opus 4.8</strong> annoncé avec performances agentiques et de codage améliorées, workflows dynamiques.</li>
+<li><strong>Cloudflare Agents Week (2e édition)</strong>, lancée le 2 août sans liste produit préalable : la société dévoile progressivement (3-7 août) des primitives d'exécution, de stockage, de sécurité et une vision du « web agentique ».</li>
+<li><strong>Delinea</strong> a annoncé une politique de sécurité appliquée à <strong>chaque appel d'outil</strong> effectué par un agent IA avant action — une réponse directe aux risques de dérive agentique en entreprise.</li>
+</ul>
+<hr />
+<h3 id="5-ecriture-naturelle-ecrire-comme-un-humain-prompts-cles_1">5. Écriture naturelle ("Écrire comme un humain") &amp; Prompts clés</h3>
+<ul>
+<li>Tendance virale sur les réseaux : une "compétence" (skill) permettant de rendre Claude <strong>« 10x plus humain »</strong> dans son écriture circule activement sur Instagram/TikTok cette semaine, avec des créateurs partageant des configurations de prompts pour éliminer le « ton IA détectable ».</li>
+<li><strong>Rewrite AI</strong> (App Store) lance une mise à jour offrant trois versions simultanées (Optimale, Sûre, Naturelle) à chaque réécriture, avec fonctionnement hors ligne via Apple Intelligence sur iPhone compatibles.</li>
+<li><strong>Humanize AI Text</strong> (Google Play) mis à jour le 4 août 2026 avec un détecteur IA intégré générant un score IA/humain détaillé par passage.</li>
+</ul>
+<blockquote>
+<p><strong>Astuce pratique repérée cette semaine :</strong> pour réduire de ~65 % la "consommation" de contexte de Claude tout en gardant un ton naturel, les créateurs recommandent de structurer le prompt en 4 blocs : <strong>Tâche → Contexte → Fichiers de référence → Outils applicatifs</strong>, plutôt qu'un prompt narratif unique.</p>
+</blockquote>
+<hr />
+<h3 id="6-actualites-tendances-etat-de-la-situation_1">6. Actualités, Tendances &amp; État de la situation</h3>
+<ul>
+<li><strong>AI Act — phase de sanctions activée depuis le 2 août 2026</strong> : la Commission européenne peut désormais contrôler directement les fournisseurs de grands modèles, exiger des informations et prononcer des sanctions. Les chatbots doivent obligatoirement s'identifier comme tels auprès des utilisateurs (sauf évidence).</li>
+<li><strong>Étude Cisco</strong> publiée cette semaine sur la robustesse de 15 modèles frontière face aux attaques multi-turn : le taux de succès d'attaque (ASR) explose en conversation itérative — <strong>Gemini 3 Pro passe de 18,10 % à 73,35 %</strong>, <strong>Grok 4.1 Fast culmine à 88,30 %</strong> en mode non-raisonnement. Signal d'alerte majeur pour la sécurité des déploiements agentiques.</li>
+<li><strong>Google–SpaceX</strong> : accord signé pour louer jusqu'à 110 000 GPU NVIDIA opérés par xAI, loyer mensuel de 920 millions USD (~1,28 milliard CAD) sur la période octobre 2026–juin 2029.</li>
+<li><strong>Anthropic</strong> plaide publiquement pour un <strong>ralentissement du développement mondial de l'IA</strong>, évoquant le risque d'auto-amélioration récursive sans supervision humaine.</li>
+<li><strong>Fish Audio</strong> lève 52 millions USD (~72,55 millions CAD) pour ses modèles vocaux IA — plus de 8 millions d'utilisateurs et 21 millions USD de revenus annuels.</li>
+<li><strong>OVHcloud</strong> confirme la construction de son propre modèle d'IA frontière (budget 150-200 millions €, soit <strong>241,8 à 322,5 millions CAD</strong>), dans le sillage d'une semaine faste pour la souveraineté IA européenne (consortium EUROPA, 655 M€ additionnels annoncés par la France).</li>
+</ul>
+  </div>
+
+
+  <a class="pdf-badge" href="rapport.pdf">📄 Télécharger le PDF</a>
+</div>
+<footer class="site-footer">Généré automatiquement chaque dimanche par l'Agent de Veille IA Hebdomadaire.</footer>
+
+</body>
+</html>

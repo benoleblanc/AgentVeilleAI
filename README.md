@@ -4,8 +4,7 @@ Application console Python entièrement autonome qui, chaque **dimanche à 6h00 
 
 - Recherche web (**Tavily**) sur 6 thèmes fixes + taux de change réels du jour (USD/CAD, EUR/CAD).
 - Rédaction du rapport en français via l'**API Anthropic** (Claude), avec tous les tarifs convertis en CAD.
-- Génération d'un **PDF façon magazine** (WeasyPrint) et mise à jour d'un **site d'archive HTML** (GitHub Pages).
-- Envoi du PDF par **courriel**.
+- Génération d'un **PDF façon magazine** (WeasyPrint) et mise à jour d'un **site d'archive HTML** (GitHub Pages) — c'est là que le rapport hebdomadaire se consulte, chaque dimanche.
 - Automatisation complète via **GitHub Actions**.
 
 ## Structure du projet
@@ -13,7 +12,7 @@ Application console Python entièrement autonome qui, chaque **dimanche à 6h00 
 ```
 main.py                     # point d'entrée / orchestrateur
 config.py                   # thèmes, constantes, variables d'environnement
-services/                   # Tavily, taux de change, Anthropic, envoi de courriel
+services/                   # Tavily, taux de change, Anthropic
 generators/                 # génération PDF + régénération du site statique
 templates/                  # gabarits Jinja2 + CSS (web et PDF)
 reports/                    # historique brut (source de vérité, committé sur main)
@@ -49,13 +48,6 @@ Dans le dépôt : **Settings → Secrets and variables → Actions → New repos
 |---|---|
 | `TAVILY_API_KEY` | Clé API Tavily (⚠️ régénère la clé fournie initialement dans le chat — elle a été exposée) |
 | `ANTHROPIC_API_KEY` | Clé API Anthropic |
-| `SMTP_SERVER` | Ex. `smtp.gmail.com` |
-| `SMTP_PORT` | Ex. `587` |
-| `SENDER_EMAIL` | Adresse courriel expéditrice |
-| `SENDER_PASSWORD` | Mot de passe d'application (pas le mot de passe du compte — voir ci-dessous pour Gmail) |
-| `RECEIVER_EMAIL` | `beno.leblanc@gmail.com` |
-
-> **Gmail** : active la validation en 2 étapes puis génère un "mot de passe d'application" (https://myaccount.google.com/apppasswords) — c'est cette valeur qui va dans `SENDER_PASSWORD`, pas le mot de passe du compte Google.
 
 ### 3. Activer GitHub Pages
 
@@ -85,13 +77,16 @@ Vérifie ensuite :
 - `reports/<date>/report.md` et `metadata.json` (historique)
 - `reports/<date>/rapport.pdf` (PDF généré)
 - `site/index.html` et `site/reports/<date>/index.html` (site, ouvrir dans un navigateur)
-- Réception du courriel avec le PDF en pièce jointe
 
 > Note Windows : WeasyPrint nécessite les bibliothèques GTK (Pango/Cairo). Le plus simple en local est d'utiliser **WSL** ou un conteneur ; en production, le workflow GitHub Actions (Ubuntu) installe automatiquement tout ce qu'il faut.
 
 ## Déclenchement manuel du workflow
 
-Dans l'onglet **Actions** du dépôt → sélectionner "Rapport hebdomadaire de veille IA" → **Run workflow**. Ce mode ignore la vérification d'heure locale et s'exécute immédiatement — utile pour tester la chaîne complète (génération → commit → déploiement → courriel).
+Dans l'onglet **Actions** du dépôt → sélectionner "Rapport hebdomadaire de veille IA" → **Run workflow**. Ce mode ignore la vérification d'heure locale et s'exécute immédiatement — utile pour tester la chaîne complète (génération → commit → déploiement).
+
+## Consulter le rapport
+
+Le site est mis à jour automatiquement chaque dimanche. Une fois GitHub Pages activé (étape 3), il suffit d'aller à `https://<ton-utilisateur>.github.io/<nom-du-depot>/` pour lire le dernier rapport ou consulter l'archive complète — aucun courriel n'est envoyé, la consultation se fait directement sur le site.
 
 ## Sécurité
 

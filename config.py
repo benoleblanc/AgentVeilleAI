@@ -1,7 +1,7 @@
 """
 Configuration centrale de l'Agent de Veille IA Hebdomadaire.
 
-Toutes les valeurs sensibles (clés API, identifiants SMTP) sont chargées
+Toutes les valeurs sensibles (clés API) sont chargées
 depuis les variables d'environnement — jamais codées en dur ici.
 En local, elles peuvent être fournies via un fichier .env (voir .env.example).
 """
@@ -23,17 +23,11 @@ TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5")
 
-SMTP_SERVER = os.environ.get("SMTP_SERVER", "")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
-SENDER_EMAIL = os.environ.get("SENDER_EMAIL", "")
-SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD", "")
-RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL", "beno.leblanc@gmail.com")
-
-# Site public une fois déployé (utilisé pour les liens absolus dans le courriel, optionnel)
+# Site public une fois déployé (référence informative, ex. dans le README)
 SITE_BASE_URL = os.environ.get("SITE_BASE_URL", "")
 
 # Mode de test local : désactive la génération PDF (WeasyPrint nécessite des
-# librairies natives absentes par défaut sur Windows) et l'envoi du courriel.
+# librairies natives absentes par défaut sur Windows).
 # Ne jamais activer en production (le workflow GitHub Actions ne le définit pas).
 SKIP_PDF = os.environ.get("SKIP_PDF", "false").lower() == "true"
 

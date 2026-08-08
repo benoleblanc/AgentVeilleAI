@@ -1,0 +1,108 @@
+name: Rapport hebdomadaire de veille IA
+
+on:
+  schedule:
+    # GitHub Actions ne gère pas nativement le changement d'heure (DST).
+    # On programme donc les deux horaires UTC possibles pour 6h00 à Montréal
+    # (10h00 UTC en heure d'été / EDT, 11h00 UTC en heure d'hiver / EST) ;
+    # une étape de garde plus bas ne laisse s'exécuter que celui qui correspond
+    # réellement à 6h00 heure locale au moment du run.
+    - cron: "0 10 * * 0"
+    - cron: "0 11 * * 0"
+  workflow_dispatch: {}   # permet un déclenchement manuel (test), ignore la garde horaire
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-report
+  cancel-in-progress: false
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Vérifier l'heure locale (Québec) — gère le changement d'heure
+        id: check_time
+        run: |
+          python3 - <<'EOF'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          heure_locale = datetime.now(ZoneInfo("America/Montreal"))
+          should_run = "true" if heure_locale.hour == 6 else "false"
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"should_run={should_run}\n")
+
+          print(f"Heure locale Montréal: {heure_locale.isoformat()} -> should_run={should_run}")
+          EOF
+
+      - name: Déterminer si le run doit continuer
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ steps.check_time.outputs.should_run }}" = "true" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Ce déclenchement cron ne correspond pas à 6h00 heure de Montréal (probablement l'autre horaire DST) — run ignoré."
+          fi
+
+      - name: Set up Python
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances système (WeasyPrint)
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 \
+            libffi-dev shared-mime-info fonts-liberation
+
+      - name: Installer les dépendances Python
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Générer le rapport hebdomadaire
+        if: steps.gate.outputs.run == 'true'
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python main.py
+
+      - name: Committer le nouvel historique sur main
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "agent-veille-ia[bot]"
+          git config user.email "agent-veille-ia[bot]@users.noreply.github.com"
+          git add reports/
+          if ! git diff --cached --quiet; then
+            git commit -m "Rapport hebdomadaire du $(date -u +'%Y-%m-%d')"
+            git push
+          else
+            echo "Aucun changement dans reports/ à committer."
+          fi
+
+      - name: Déployer le site sur gh-pages
+        if: steps.gate.outputs.run == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: "Publication du site — ${{ github.run_id }}"

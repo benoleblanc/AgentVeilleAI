@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>{{ title }} — Veille IA Hebdomadaire</title>
+{% if mode == "web" %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ teaser }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endif %}
+<style>{{ css }}</style>
+</head>
+<body>
+{% if mode == "web" %}
+<div class="container">
+  <a class="back-link" href="../../index.html">&larr; Retour à l'archive</a>
+{% else %}
+<div class="cover">
+  <div class="kicker">Veille IA Hebdomadaire</div>
+  <h1>{{ title }}</h1>
+  <p class="teaser">{{ teaser }}</p>
+  <p class="meta">Semaine du {{ date_affichage }} · Taux utilisés : 1 USD = {{ taux.USD_CAD }} CAD · 1 EUR = {{ taux.EUR_CAD }} CAD</p>
+</div>
+{% endif %}
+
+{% if mode == "web" %}
+  <header>
+    <div class="date">{{ date_affichage }}</div>
+    <h1>{{ title }}</h1>
+    <p class="report-meta">{{ teaser }}<br>Taux utilisés : 1 USD = {{ taux.USD_CAD }} CAD · 1 EUR = {{ taux.EUR_CAD }} CAD</p>
+  </header>
+{% endif %}
+
+  <div class="report-content">
+    {{ content_html | safe }}
+  </div>
+
+{% if mode == "web" %}
+  <a class="pdf-badge" href="rapport.pdf">📄 Télécharger le PDF</a>
+</div>
+<footer class="site-footer">Généré automatiquement chaque dimanche par l'Agent de Veille IA Hebdomadaire.</footer>
+{% endif %}
+</body>
+</html>

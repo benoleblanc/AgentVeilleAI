@@ -1,0 +1,18 @@
+# Secrets locaux
+.env
+
+# Build du site (régénéré à chaque run, déployé sur gh-pages — jamais sur main)
+/site/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Éditeurs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

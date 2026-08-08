@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Agent de Veille IA Hebdomadaire — Archive</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Archive des rapports hebdomadaires de veille en intelligence artificielle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>{{ css }}</style>
+</head>
+<body>
+<div class="site-header">
+  <span class="kicker">Mise à jour chaque dimanche, 6h00 (heure de Québec)</span>
+  <h1>Agent de Veille IA Hebdomadaire</h1>
+  <p>Actualités, comparatifs d'outils et tarifs convertis en CAD, sur 6 thèmes clés de l'intelligence artificielle.</p>
+</div>
+
+<div class="container">
+  {% if reports %}
+  <div class="archive-grid">
+    {% for r in reports %}
+    <article class="report-card">
+      <div class="date">{{ r.date_affichage }}</div>
+      <h2><a href="reports/{{ r.date }}/index.html">{{ r.title }}</a></h2>
+      <p>{{ r.teaser }}</p>
+      <div class="links">
+        <a href="reports/{{ r.date }}/index.html">Lire en ligne →</a>
+        <a href="reports/{{ r.date }}/rapport.pdf">Télécharger le PDF</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <p>Aucun rapport publié pour le moment. Revenez dimanche prochain !</p>
+  </div>
+  {% endif %}
+</div>
+
+<footer class="site-footer">Généré automatiquement par l'Agent de Veille IA Hebdomadaire — {{ reports | length }} rapport(s) archivé(s).</footer>
+</body>
+</html>

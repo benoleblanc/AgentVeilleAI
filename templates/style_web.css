@@ -1,0 +1,227 @@
+/* ==========================================================================
+   Agent de Veille IA Hebdomadaire — style "magazine" (web)
+   ========================================================================== */
+
+:root {
+  --bg: #f7f5f0;
+  --bg-card: #ffffff;
+  --ink: #1b1b1f;
+  --ink-soft: #52525b;
+  --accent: #6a3df5;
+  --accent-soft: #efe9ff;
+  --line: #e6e2d8;
+  --success: #0f8a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114;
+    --bg-card: #1a1a1f;
+    --ink: #f2f1ee;
+    --ink-soft: #a3a3ad;
+    --accent: #a78bfa;
+    --accent-soft: #241c3d;
+    --line: #2c2c33;
+    --success: #34d399;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.6rem;
+}
+
+.site-header p {
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* --- Cartes d'archive (index) ------------------------------------------ */
+
+.archive-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.report-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.report-card .date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.report-card h2 {
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.report-card p {
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.report-card .links a {
+  font-weight: 600;
+  margin-right: 1.25rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 4rem 1rem;
+}
+
+/* --- Page d'un rapport --------------------------------------------------- */
+
+.report-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.report-content h2 {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.report-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  color: var(--accent);
+}
+
+.report-content h4 {
+  font-size: 1.02rem;
+  margin-top: 1.4rem;
+}
+
+.report-content p { margin: 0.9rem 0; }
+
+.report-content ul, .report-content ol {
+  padding-left: 1.4rem;
+}
+
+.report-content li { margin: 0.35rem 0; }
+
+.report-content blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1.2rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+}
+
+.report-content blockquote p { margin: 0; }
+
+.report-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+
+.report-content th, .report-content td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+
+.report-content th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.report-content code {
+  background: var(--accent-soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.88em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.pdf-badge {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.pdf-badge:hover { text-decoration: none; opacity: 0.9; }
+
+footer.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}

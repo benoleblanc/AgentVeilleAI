@@ -31,7 +31,7 @@ SITE_BASE_URL = os.environ.get("SITE_BASE_URL", "")
 # Ne jamais activer en production (le workflow GitHub Actions ne le définit pas).
 SKIP_PDF = os.environ.get("SKIP_PDF", "false").lower() == "true"
 
-# --- Les 6 thèmes couverts systématiquement chaque semaine ----------------
+# --- Les 7 thèmes couverts systématiquement chaque semaine ----------------
 THEMES = [
     {
         "id": "creation-multimedia",
@@ -42,8 +42,14 @@ THEMES = [
     {
         "id": "developpement-codage",
         "titre": "Développement, Codage & Intégrations",
-        "requete_fond": "meilleurs outils IA codage agents de code IDE comparatif intégration Stripe",
-        "requete_actualite": "actualité IA codage IDE agent de code intégration support français interface cette semaine",
+        "requete_fond": "meilleurs outils IA codage agents de code IDE comparatif intégration",
+        "requete_actualite": "actualité IA codage IDE agent de code intégration cette semaine",
+    },
+    {
+        "id": "plateformes-paiement",
+        "titre": "Plateformes de Paiement (Merchant of Record) pour vendre par abonnement",
+        "requete_fond": "meilleures plateformes paiement Merchant of Record abonnement SaaS gestion taxes comparatif Stripe Paddle Lemon Squeezy FastSpring Chargebee",
+        "requete_actualite": "actualité plateforme paiement Merchant of Record abonnement SaaS interface français nouveauté cette semaine",
     },
     {
         "id": "productivite-recherche",

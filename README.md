@@ -2,7 +2,7 @@
 
 Application console Python entièrement autonome qui, chaque **dimanche à 6h00 (heure de Québec)**, génère un rapport hebdomadaire de veille en intelligence artificielle :
 
-- Recherche web (**Tavily**) sur 6 thèmes fixes + taux de change réels du jour (USD/CAD, EUR/CAD).
+- Recherche web (**Tavily**) sur 7 thèmes fixes + taux de change réels du jour (USD/CAD, EUR/CAD).
 - Rédaction du rapport en français via l'**API Anthropic** (Claude), avec tous les tarifs convertis en CAD.
 - Génération d'un **PDF façon magazine** (WeasyPrint) et mise à jour d'un **site d'archive HTML** (GitHub Pages) — c'est là que le rapport hebdomadaire se consulte, chaque dimanche.
 - Automatisation complète via **GitHub Actions**.

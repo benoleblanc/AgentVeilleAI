@@ -1,5 +1,5 @@
 """
-Collecte des actualités IA de la semaine via l'API Tavily, pour chacun des 6 thèmes.
+Collecte des actualités IA de la semaine via l'API Tavily, pour chacun des 7 thèmes.
 
 Pour chaque thème, on effectue deux recherches distinctes :
   - une recherche "de fond" (état de la situation / palmarès des outils),

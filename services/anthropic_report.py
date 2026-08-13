@@ -3,10 +3,12 @@ Génération du rapport hebdomadaire via l'API Anthropic (Claude).
 
 Le prompt système ci-dessous est basé sur la spécification initiale fournie
 par l'utilisateur, ajustée le 2026-08-08 pour un ton plus ludique et une
-vulgarisation accrue destinée à un public débutant en IA (français québécois).
-Le prompt "user" assemble les données de recherche Tavily et les taux de
-change du jour, et impose un format de sortie exploitable par les générateurs
-PDF/HTML (frontmatter YAML + markdown structuré).
+vulgarisation accrue destinée à un public débutant en IA (français québécois),
+puis à nouveau le 2026-08-08 pour ajouter un 7e thème dédié aux plateformes
+de paiement (Merchant of Record) — voir config.THEMES. Le prompt "user"
+assemble les données de recherche Tavily et les taux de change du jour, et
+impose un format de sortie exploitable par les générateurs PDF/HTML
+(frontmatter YAML + markdown structuré).
 """
 import logging
 
@@ -33,18 +35,24 @@ Instructions de rédaction et structure :
 Le rapport doit être rédigé en français et structuré strictement comme suit :
 
 SECTION 1 : ÉTAT DE LA SITUATION
-Pour chacun des 6 thèmes ci-dessous, propose un briefing de mise à niveau technologique ou conceptuelle (les fondamentaux et évolutions de fond), suivi d'un "Palmarès du moment" (Top 3 des outils les plus performants selon les retours utilisateurs).
+Pour chacun des 7 thèmes ci-dessous, propose un briefing de mise à niveau technologique ou conceptuelle (les fondamentaux et évolutions de fond), suivi d'un "Palmarès du moment" (Top 3 des outils les plus performants selon les retours utilisateurs).
 
 SECTION 2 : NOUVEAUTÉS DE LA SEMAINE
-Pour chacun des 6 thèmes ci-dessous, présente les actualités les plus fraîches et marquantes de la semaine écoulée (mises à jour, annonces, levées de fonds, sorties de modèles).
+Pour chacun des 7 thèmes ci-dessous, présente les actualités les plus fraîches et marquantes de la semaine écoulée (mises à jour, annonces, levées de fonds, sorties de modèles).
 
-LES 6 THÈMES À COUVRIR SYSTÉMATIQUEMENT :
+LES 7 THÈMES À COUVRIR SYSTÉMATIQUEMENT :
 1. Création Multimédia (Vidéo, Image & Audio).
-2. Développement, Codage & Intégrations (IDE, agents de code, Stripe, etc., avec un focus strict sur l'arrivée du support ou de l'interface en français).
-3. Productivité & Recherche.
-4. Agents & Création d'automatisations.
-5. Écriture naturelle ("Écrire comme un humain") & Prompts clés (conseils pratiques pour rédiger sans donner l'impression d'utiliser une IA).
-6. Actualités, Tendances & État de la situation (pour couvrir les angles morts de l'industrie).
+2. Développement, Codage & Intégrations (IDE, agents de code, intégrations diverses).
+3. Plateformes de Paiement (Merchant of Record) pour vendre par abonnement — voir règle spécifique ci-dessous.
+4. Productivité & Recherche.
+5. Agents & Création d'automatisations.
+6. Écriture naturelle ("Écrire comme un humain") & Prompts clés (conseils pratiques pour rédiger sans donner l'impression d'utiliser une IA).
+7. Actualités, Tendances & État de la situation (pour couvrir les angles morts de l'industrie).
+
+Règle spécifique au thème 3 (Plateformes de Paiement) :
+Ce thème n'est PAS de l'intelligence artificielle — c'est un suivi dédié pour un lecteur québécois francophone unilingue qui vend (ou s'apprête à vendre) des applications par abonnement, et qui a besoin d'une plateforme de type "Merchant of Record" (MOR — un fournisseur qui agit comme revendeur officiel de tes produits : il gère lui-même la facturation ET le calcul/versement des taxes de vente partout dans le monde, contrairement à un simple processeur de paiement comme un terminal Interac). Le focus strict et systématique de ce thème est l'arrivée ou l'amélioration du support ou de l'interface en français chez ces plateformes. Pour le "Palmarès du moment" de ce thème uniquement, présente un tableau avec exactement ces colonnes :
+| Rang | Plateforme | Bonne pour l'abonnement ? | Simple à utiliser ? | Gère les taxes ? | Interface en français ? |
+Réponds à chaque colonne de critère par une évaluation courte et claire (ex. "Oui", "Non", "Partiel — en bêta", "Oui, natif"). Ajoute ensuite un petit tableau de tarification (voir règle de tarification ci-dessous), et une phrase de recommandation finale destinée spécifiquement à un francophone unilingue.
 
 Règles strictes de formatage :
 - Tarification : Chaque fois qu'un outil est mentionné, affiche obligatoirement sa tarification convertie en Dollars Canadiens (CAD). Utilise le taux de change fourni dans le contexte de la requête. Présente les tarifs sous forme de petits tableaux clairs.
@@ -83,7 +91,7 @@ Taux de change officiels du jour à utiliser pour TOUTE conversion de prix menti
 - 1 USD = {taux['USD_CAD']:.4f} CAD
 - 1 EUR = {taux['EUR_CAD']:.4f} CAD
 
-Voici les données de recherche web collectées cette semaine pour les 6 thèmes :
+Voici les données de recherche web collectées cette semaine pour les 7 thèmes :
 
 {donnees_recherche_texte}
 
@@ -94,7 +102,7 @@ Commence ta réponse par un bloc frontmatter YAML délimité par "---" contenant
   title: un titre accrocheur pour ce rapport hebdomadaire (une phrase courte)
   teaser: un résumé d'une phrase (max 200 caractères) donnant envie de lire le rapport
 
-Puis rédige le rapport complet en Markdown en respectant strictement la structure et les règles de formatage définies dans le prompt système (2 sections, 6 thèmes chacune, tarifs en CAD sous forme de tableaux, palmarès du moment, etc.).
+Puis rédige le rapport complet en Markdown en respectant strictement la structure et les règles de formatage définies dans le prompt système (2 sections, 7 thèmes chacune, tarifs en CAD sous forme de tableaux, palmarès du moment, etc.).
 
 Exemple de début de réponse attendu :
 ---

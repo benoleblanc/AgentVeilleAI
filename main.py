@@ -3,7 +3,7 @@
 Agent de Veille IA Hebdomadaire — point d'entrée.
 
 Exécuté chaque dimanche à 6h00 (heure de Québec) via GitHub Actions :
-  1. Recherche web (Tavily) sur 6 thèmes + taux de change du jour (USD/CAD, EUR/CAD).
+  1. Recherche web (Tavily) sur 7 thèmes + taux de change du jour (USD/CAD, EUR/CAD).
   2. Rédaction du rapport en français via l'API Anthropic (Claude).
   3. Génération du PDF (style magazine) et mise à jour du site d'archive HTML.
 """
@@ -49,7 +49,7 @@ def main() -> int:
     logger.info("Taux du jour: 1 USD = %.4f CAD | 1 EUR = %.4f CAD", taux["USD_CAD"], taux["EUR_CAD"])
 
     # 2. Recherche web
-    logger.info("Étape 2/4 — Recherche web Tavily sur les 6 thèmes...")
+    logger.info("Étape 2/4 — Recherche web Tavily sur les 7 thèmes...")
     try:
         donnees_recherche = collecter_recherches_par_theme()
     except Exception:

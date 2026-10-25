@@ -4,12 +4,13 @@ on:
   schedule:
     # GitHub Actions ne gère pas nativement le changement d'heure (DST).
     # On programme donc les deux horaires UTC possibles pour 6h00 à Montréal
-    # (10h00 UTC en heure d'été / EDT, 11h00 UTC en heure d'hiver / EST) ;
-    # une étape de garde plus bas ne laisse s'exécuter que celui qui correspond
-    # réellement à 6h00 heure locale au moment du run.
+    # (10h00 UTC en heure d'été / EDT, 11h00 UTC en heure d'hiver / EST).
+    # GitHub peut retarder un déclenchement planifié de plusieurs heures : on ne
+    # filtre donc pas sur l'heure, mais sur l'existence du rapport du jour — le
+    # premier déclenchement génère le rapport, le second s'arrête (voir la garde).
     - cron: "0 10 * * 0"
     - cron: "0 11 * * 0"
-  workflow_dispatch: {}   # permet un déclenchement manuel (test), ignore la garde horaire
+  workflow_dispatch: {}   # permet un déclenchement manuel (test), ignore la garde
 
 permissions:
   contents: write
@@ -27,31 +28,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Vérifier l'heure locale (Québec) — gère le changement d'heure
-        id: check_time
-        run: |
-          python3 - <<'EOF'
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-
-          heure_locale = datetime.now(ZoneInfo("America/Montreal"))
-          should_run = "true" if heure_locale.hour == 6 else "false"
-
-          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-              f.write(f"should_run={should_run}\n")
-
-          print(f"Heure locale Montréal: {heure_locale.isoformat()} -> should_run={should_run}")
-          EOF
-
-      - name: Déterminer si le run doit continuer
+      - name: Déterminer si le run doit continuer (rapport du jour déjà généré ?)
         id: gate
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ steps.check_time.outputs.should_run }}" = "true" ]; then
+          # main.py nomme le dossier du rapport avec la date UTC du run.
+          date_rapport="$(date -u +'%Y-%m-%d')"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-          else
+          elif [ -f "reports/${date_rapport}/report.md" ]; then
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Ce déclenchement cron ne correspond pas à 6h00 heure de Montréal (probablement l'autre horaire DST) — run ignoré."
+            echo "Le rapport du ${date_rapport} existe déjà (l'autre déclenchement DST a déjà fait le travail) — run ignoré."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up Python

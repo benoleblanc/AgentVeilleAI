@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>IA cette semaine : Cursor vendu 60 G$, Montréal frappée par un scandale de texte généré, et le party continue à coups de milliards — Veille IA Hebdomadaire</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Veo 3 gratuit, Cursor racheté pour 60 milliards, un écrivain montréalais pris la main dans le sac de l&#39;IA : ton topo complet sur l&#39;IA, en français clair, sans jargon qui pogne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>/* ==========================================================================
+   Agent de Veille IA Hebdomadaire — style &#34;magazine&#34; (web)
+   ========================================================================== */
+
+:root {
+  --bg: #f7f5f0;
+  --bg-card: #ffffff;
+  --ink: #1b1b1f;
+  --ink-soft: #52525b;
+  --accent: #6a3df5;
+  --accent-soft: #efe9ff;
+  --line: #e6e2d8;
+  --success: #0f8a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114;
+    --bg-card: #1a1a1f;
+    --ink: #f2f1ee;
+    --ink-soft: #a3a3ad;
+    --accent: #a78bfa;
+    --accent-soft: #241c3d;
+    --line: #2c2c33;
+    --success: #34d399;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: &#34;Inter&#34;, &#34;Segoe UI&#34;, system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: &#34;Fraunces&#34;, Georgia, &#34;Times New Roman&#34;, serif;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.6rem;
+}
+
+.site-header p {
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* --- Cartes d&#39;archive (index) ------------------------------------------ */
+
+.archive-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.report-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.report-card .date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.report-card h2 {
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.report-card p {
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.report-card .links a {
+  font-weight: 600;
+  margin-right: 1.25rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 4rem 1rem;
+}
+
+/* --- Page d&#39;un rapport --------------------------------------------------- */
+
+.report-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.report-content h2 {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.report-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  color: var(--accent);
+}
+
+.report-content h4 {
+  font-size: 1.02rem;
+  margin-top: 1.4rem;
+}
+
+.report-content p { margin: 0.9rem 0; }
+
+.report-content ul, .report-content ol {
+  padding-left: 1.4rem;
+}
+
+.report-content li { margin: 0.35rem 0; }
+
+.report-content blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1.2rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+}
+
+.report-content blockquote p { margin: 0; }
+
+.report-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+
+.report-content th, .report-content td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+
+.report-content th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.report-content code {
+  background: var(--accent-soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.88em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.pdf-badge {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.pdf-badge:hover { text-decoration: none; opacity: 0.9; }
+
+footer.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a class="back-link" href="../../index.html">&larr; Retour à l'archive</a>
+
+
+
+  <header>
+    <div class="date">25 octobre 2026</div>
+    <h1>IA cette semaine : Cursor vendu 60 G$, Montréal frappée par un scandale de texte généré, et le party continue à coups de milliards</h1>
+    <p class="report-meta">Veo 3 gratuit, Cursor racheté pour 60 milliards, un écrivain montréalais pris la main dans le sac de l&#39;IA : ton topo complet sur l&#39;IA, en français clair, sans jargon qui pogne.<br>Taux utilisés : 1 USD = 1.4004 CAD · 1 EUR = 1.5687 CAD</p>
+  </header>
+
+
+  <div class="report-content">
+    <h2 id="section-1-etat-de-la-situation">SECTION 1 : ÉTAT DE LA SITUATION</h2>
+<p>Avant de plonger, un petit rappel : tous les prix sont convertis en dollars canadiens (CAD) avec les taux du jour — 1 $ US = 1,4004 $ CA et 1 € = 1,5687 $ CA. Fait que quand tu vois un prix « américain » qui a l'air cute, dis-toi qu'il faut quasiment le multiplier par 1,4 pour savoir combien ça va te coûter <em>icitte</em>.</p>
+<hr />
+<h3 id="1-creation-multimedia-video-image-audio">1. Création Multimédia (Vidéo, Image &amp; Audio)</h3>
+<p><strong>Le topo :</strong> La génération vidéo par IA (c'est-à-dire créer des clips vidéo juste en décrivant ce que tu veux, en texte) a fait un bond énorme cette année. Le gros changement de 2026 : le <strong>son synchronisé automatiquement</strong> (dialogues, bruitages, ambiance) directement généré avec l'image — avant, il fallait ajouter la trame sonore à part. On évalue maintenant ces outils sur plusieurs critères : la fidélité au prompt (est-ce que le résultat respecte vraiment ta description?), le réalisme physique (la lumière, les mouvements, les textures), la cohérence (les objets ne « flashent » pas d'une image à l'autre) et la qualité audio. Les modèles chinois (Alibaba, ByteDance) mènent sur plusieurs benchmarks techniques, mais posent des questions de conformité pour un usage professionnel ici — tes données ou le visage de tes clients qui transitent par des serveurs à l'étranger, c'est un détail à checker avant de foncer.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<ol>
+<li><strong>Veo 3 / Veo 3.1 (Google DeepMind)</strong> — Le plus réaliste, avec un son natif (voix, ambiance) impeccable. Accessible gratuitement via Google Flow (le studio créatif de Google).</li>
+<li><strong>Kling 3.0</strong> — Stable, prévisible, pensé pour des vrais flux de production (pas juste des essais random).</li>
+<li><strong>Wan 3.0 (Alibaba)</strong> — Techniquement en tête des classements (éclairage, contrôle de caméra), mais l'infrastructure passe par l'Chine — à évaluer si tu gères des données sensibles.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Prix (converti CAD)</th>
+<th>Résolution max</th>
+<th>Son natif?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Veo 3</td>
+<td>Dès 19,99 $ US → <strong>27,99 $ CA</strong>/mois</td>
+<td>4K</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Kling 3.0</td>
+<td>Dès 6,99 $ US → <strong>9,79 $ CA</strong>/mois</td>
+<td>4K</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Wan 3.0</td>
+<td>12 $ US/minute → <strong>16,80 $ CA</strong>/minute</td>
+<td>—</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Runway Gen-4.5</td>
+<td>12 $ US → <strong>16,80 $ CA</strong>/mois</td>
+<td>Dès 720p</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Seedance 2</td>
+<td>Dès 98 $ US → <strong>137,24 $ CA</strong>/mois</td>
+<td>720p</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-developpement-codage-integrations">2. Développement, Codage &amp; Intégrations</h3>
+<p><strong>Le topo :</strong> On ne parle plus de simple « auto-complétion » de code. Les <strong>agents de codage</strong> sont maintenant des assistants autonomes capables de comprendre tout ton projet (pas juste un fichier), de lancer des tests, créer des <em>pull requests</em> (des propositions de changement de code soumises pour approbation) et même déployer l'application. Un <strong>IDE</strong> (Integrated Development Environment — le logiciel où tu écris et testes ton code) comme Cursor est littéralement devenu « VS Code mais pensé IA dès le départ ». La tendance chaude : l'<strong>interopérabilité</strong> — OpenAI a sorti un plugin pour que les usagers de Claude Code (Anthropic) puissent appeler Codex (OpenAI) en renfort quand Claude bloque. Les labos ne se chicanent plus pour l'exclusivité, ils collaborent.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<ol>
+<li><strong>Cursor</strong> — L'IDE IA qui a remplacé VS Code pour une grosse partie des développeurs pros.</li>
+<li><strong>Claude Code (Anthropic)</strong> — Le champion de l'autonomie : tu lui donnes une tâche, tu pars prendre un café, c'est fini quand tu reviens.</li>
+<li><strong>GitHub Copilot</strong> — Moins flashy, mais l'intégration native à GitHub et la compatibilité multi-éditeurs (VS Code, JetBrains) en font un choix solide et éprouvé.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Prix (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor</td>
+<td>Gratuit / 20 $ US (<strong>28,01 $ CA</strong>) Pro / 60 $ US (<strong>84,02 $ CA</strong>) Pro+ / 200 $ US (<strong>280,08 $ CA</strong>) Ultra — par mois</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Inclus dans Claude Pro (≈20 $ US/mois → <strong>28,01 $ CA</strong>) ou Max</td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>≈10-19 $ US/mois selon plan → <strong>14,00 à 26,61 $ CA</strong> (estimation générale)</td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td>Gratuit / 15 $ US (<strong>21,01 $ CA</strong>) Pro / 60 $ US (<strong>84,02 $ CA</strong>) Teams</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-plateformes-de-paiement-merchant-of-record">3. Plateformes de Paiement (Merchant of Record)</h3>
+<p><strong>Le topo :</strong> Petit rappel pour les nouveaux : un <strong>Merchant of Record (MOR)</strong>, c'est une plateforme qui devient <em>officiellement</em> le vendeur légal de ton produit à ta place. Contrairement à un simple processeur de paiement (genre Stripe de base ou un terminal Interac), qui te laisse toute la paperasse de taxes sur les bras, un MOR calcule, collecte et verse lui-même les taxes de vente partout dans le monde — TVA en Europe, sales tax aux États-Unis, etc. Pour un Québécois qui veut vendre une appli par abonnement sans se transformer en comptable international, c'est souvent la voie la plus simple.</p>
+<p>Le marché est dominé par Paddle, Lemon Squeezy (racheté par Stripe), FastSpring et PayPro Global. <strong>Constat important de cette semaine : aucune de ces plateformes n'annonce une interface francophone native digne de ce nom.</strong> Le <em>checkout</em> (la page de paiement finale) est souvent traduit automatiquement en français pour tes clients, mais le tableau de bord administratif (là où TOI tu gères ton compte) reste très majoritairement en anglais. C'est le vrai irritant pour un entrepreneur unilingue francophone en ce moment.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Plateforme</th>
+<th>Bonne pour l'abonnement ?</th>
+<th>Simple à utiliser ?</th>
+<th>Gère les taxes ?</th>
+<th>Interface en français ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Lemon Squeezy</strong></td>
+<td>Oui, pensé pour ça</td>
+<td>Oui, boutique clé en main</td>
+<td>Oui, mondial</td>
+<td>Partiel — paiement traduit, back-office en anglais</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Paddle</strong></td>
+<td>Oui, référence du marché SaaS</td>
+<td>Oui, API moderne mais plus technique</td>
+<td>Oui, mondial</td>
+<td>Partiel — paiement traduit, back-office en anglais</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>FastSpring</strong></td>
+<td>Oui, logiciels/SaaS établis</td>
+<td>Moyen — plus de configuration requise</td>
+<td>Oui, mondial</td>
+<td>Non confirmé — anglais en priorité</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarification :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Plateforme</th>
+<th>Frais par transaction (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lemon Squeezy</td>
+<td>5 % + 0,50 $ US → <strong>5 % + 0,70 $ CA</strong> (+1,5 % sur les ventes internationales)</td>
+</tr>
+<tr>
+<td>Paddle</td>
+<td>5 % + 0,50 $ US → <strong>5 % + 0,70 $ CA</strong></td>
+</tr>
+<tr>
+<td>FastSpring</td>
+<td>5,9 % + 0,95 $ US → <strong>5,9 % + 1,33 $ CA</strong></td>
+</tr>
+<tr>
+<td>Stripe Managed Payments</td>
+<td>3,5 % + frais Stripe standard (≈2,9 % + 0,30 $ US → <strong>2,9 % + 0,42 $ CA</strong>)</td>
+</tr>
+<tr>
+<td>PayPro Global</td>
+<td>Sur mesure, généralement 4 à 6 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notre recommandation pour toi, unilingue francophone :</strong> Lemon Squeezy reste le choix le plus simple pour démarrer vite (boutique en ligne prête en une après-midi) — le fait que tes clients voient un paiement en français compte plus que ton tableau de bord perso, que tu peux naviguer avec un traducteur de navigateur en attendant mieux. Si ton volume grossit sérieusement, regarde Paddle, qui a un écosystème plus robuste pour scaler.</p>
+<hr />
+<h3 id="4-productivite-recherche">4. Productivité &amp; Recherche</h3>
+<p><strong>Le topo :</strong> La bataille des assistants généralistes continue, mais la vraie tendance 2026, c'est la <strong>spécialisation</strong>. On ne veut plus juste « un chatbot » — on veut un outil qui connaît déjà TES documents (comme NotebookLM de Google, qui répond seulement à partir des fichiers que tu lui donnes, sans halluciner à partir de connaissances générales), ou un moteur de recherche qui cite ses sources (Perplexity). Autre virage marquant : le calcul <strong>hybride</strong>, où une partie du travail tourne directement sur ton ordinateur plutôt que dans le nuage (le "cloud"), pour protéger les données sensibles — une étape importante pour les avocats, comptables et autres métiers avec des documents confidentiels.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<ol>
+<li><strong>ChatGPT (GPT-5.5)</strong> — Le couteau suisse : texte, image et voix dans une même conversation.</li>
+<li><strong>Perplexity</strong> — Pour la recherche web avec sources citées, plus fiable qu'un chatbot généraliste pour "googler" intelligemment.</li>
+<li><strong>NotebookLM (Google)</strong> — Pour transformer tes propres documents en assistant privé, sans invention de faits.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Prix (converti CAD, approximatif)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT Plus</td>
+<td>≈20 $ US/mois → <strong>28,01 $ CA</strong></td>
+</tr>
+<tr>
+<td>Perplexity Pro</td>
+<td>≈20 $ US/mois → <strong>28,01 $ CA</strong></td>
+</tr>
+<tr>
+<td>NotebookLM</td>
+<td>Gratuit (version de base)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="5-agents-creation-dautomatisations">5. Agents &amp; Création d'automatisations</h3>
+<p><strong>Le topo :</strong> Un <strong>agent IA</strong>, contrairement à un simple chatbot qui répond à des questions, peut <em>agir</em> : il raisonne sur un contexte, décide quel outil utiliser, exécute des tâches à plusieurs étapes (envoyer un courriel, remplir un formulaire, mettre à jour un CRM) sans que tu restes collé devant l'écran. Les plateformes <strong>no-code</strong> (sans avoir à écrire une ligne de code) comme n8n ou Zapier permettent de brancher tes applications ensemble et d'y ajouter un cerveau IA. La tendance de fond : les agents deviennent des assistants personnels complets qui gèrent courriels, achats et agendas — un pas de plus vers le rêve du majordome numérique façon J.A.R.V.I.S.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<ol>
+<li><strong>n8n</strong> — Flexibilité maximale, possibilité d'auto-hébergement, plus de 1 200 intégrations. Un peu technique pour un vrai débutant, mais ultra-puissant.</li>
+<li><strong>Zapier</strong> — Le plus accessible, plus de 8 000 applications connectées, prise en main en quelques minutes.</li>
+<li><strong>Lindy</strong> — Le meilleur pour créer un assistant style « boîte de réception intelligente » sans toucher au code.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Prix (converti CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n8n</td>
+<td>Gratuit en auto-hébergement / ≈20 €/mois → <strong>31,37 $ CA</strong> (cloud)</td>
+</tr>
+<tr>
+<td>Zapier</td>
+<td>Gratuit / ≈17 €/mois → <strong>26,67 $ CA</strong></td>
+</tr>
+<tr>
+<td>Lindy</td>
+<td>Dès 29,99 $ US/utilisateur/mois → <strong>42,00 $ CA</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="6-ecriture-naturelle-ecrire-comme-un-humain-prompts-cles">6. Écriture naturelle ("Écrire comme un humain") &amp; Prompts clés</h3>
+<p><strong>Le topo :</strong> Deux mondes cohabitent ici. D'un côté, les <strong>détecteurs de texte IA</strong> (comme GPTZero ou Originality.ai) qui tentent de repérer un texte généré par une machine. De l'autre, les <strong>« humaniseurs »</strong>, des outils qui reformulent un texte d'IA pour le rendre moins détectable. Attention : utiliser ces outils pour, disons, remettre un travail scolaire ou un livre sans le dire, c'est risqué et glissant — on en parle juste en bas dans les nouveautés avec un cas bien de chez nous. La vraie bonne pratique, qu'on te recommande, c'est d'utiliser l'IA comme un premier jet, puis de le réécrire avec TA voix, tes anecdotes, tes expressions. Varier la longueur des phrases, couper les ouvertures robotiques du genre « Il est important de noter que… », et préserver tes propres détails concrets (dates, chiffres, noms).</p>
+<p><strong>Palmarès du moment (outils d'humanisation) :</strong></p>
+<ol>
+<li><strong>Walter Writes</strong> — Meilleur équilibre entre contournement de détection et qualité d'écriture préservée.</li>
+<li><strong>GPTHuman</strong> — Score de contournement très élevé contre des détecteurs reconnus comme Originality.ai.</li>
+<li><strong>StealthWriter</strong> — Rapide et convivial, mais au prix d'une qualité grammaticale parfois moins fine.</li>
+</ol>
+<blockquote>
+<p>⚠️ **Mise en gar</p>
+</blockquote>
+  </div>
+
+
+  <a class="pdf-badge" href="rapport.pdf">📄 Télécharger le PDF</a>
+</div>
+<footer class="site-footer">Généré automatiquement chaque dimanche par l'Agent de Veille IA Hebdomadaire.</footer>
+
+</body>
+</html>

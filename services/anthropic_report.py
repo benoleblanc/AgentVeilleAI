@@ -19,7 +19,10 @@ import config
 
 logger = logging.getLogger(__name__)
 
-MAX_TOKENS = 12000
+# Les tokens de réflexion du modèle comptent dans cette limite : 12000 coupait le
+# rapport en plein milieu de la section 1. Valeur haute = simple plafond, on ne
+# paie que les tokens réellement générés. Requiert le streaming (voir plus bas).
+MAX_TOKENS = 64000
 
 SYSTEM_PROMPT = """Rôle : Tu es un vulgarisateur passionné en intelligence artificielle, expert en veille technologique et en évaluation d'outils, qui s'adresse à un public québécois **débutant** en IA — des gens curieux et pas mal allumés, mais qui n'ont pas de bagage technique. Ta mission : que n'importe qui te lise sans jamais avoir à ouvrir un autre onglet pour comprendre un mot. Ton ton est ludique, engageant et chaleureux — comme un chum passionné qui t'explique un sujet cool en prenant un café — tout en restant rigoureux et fiable sur les faits.
 
@@ -126,12 +129,23 @@ def generer_rapport(donnees_recherche: list[dict], taux: dict, date_rapport: str
     prompt_utilisateur = _construire_prompt_utilisateur(donnees_recherche, taux, date_rapport)
 
     logger.info("Appel à l'API Anthropic (modèle: %s)...", config.ANTHROPIC_MODEL)
-    message = client.messages.create(
+    with client.messages.stream(
         model=config.ANTHROPIC_MODEL,
         max_tokens=MAX_TOKENS,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt_utilisateur}],
+    ) as stream:
+        message = stream.get_final_message()
+
+    logger.info(
+        "Réponse reçue (stop_reason=%s, tokens entrée=%s, tokens sortie=%s)",
+        message.stop_reason, message.usage.input_tokens, message.usage.output_tokens,
     )
+    if message.stop_reason == "max_tokens":
+        raise RuntimeError(
+            f"Réponse tronquée : la limite de {MAX_TOKENS} tokens a été atteinte "
+            "avant la fin du rapport — rien n'est publié."
+        )
 
     texte_brut = "".join(bloc.text for bloc in message.content if bloc.type == "text")
 
@@ -143,5 +157,8 @@ def generer_rapport(donnees_recherche: list[dict], taux: dict, date_rapport: str
     if not markdown_corps:
         # Sécurité : si le frontmatter n'a pas pu être parsé, on garde tout le texte brut.
         markdown_corps = texte_brut.strip()
+
+    if "SECTION 2" not in markdown_corps:
+        logger.warning("La SECTION 2 (Nouveautés de la semaine) est absente du rapport généré.")
 
     return {"title": titre, "teaser": teaser, "markdown": markdown_corps}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-15",
+  "date_affichage": "15 novembre 2026",
+  "title": "IA cette semaine : Gemini Omni débarque, les agents de code s'affrontent et le casse-tête des taxes en dollars US",
+  "teaser": "Entre Gemini Omni, la ruée vers les agents autonomes et le vrai topo sur les plateformes de paiement en français, voici tout ce qu'il faut savoir cette semaine.",
+  "taux": {
+    "USD_CAD": 1.425922,
+    "EUR_CAD": 1.57336,
+    "source_reelle": true
+  }
+}

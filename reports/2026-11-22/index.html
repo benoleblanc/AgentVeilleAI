@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>L&#39;IA en mode tourmente : Anthropic en montagnes russes, Lemon Squeezy tire sa révérence, pis ChatGPT qui veut sonner plus humain — Veille IA Hebdomadaire</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Entre la mort annoncée de Lemon Squeezy, un nouveau GPT qui jure sonner &#39;moins robot&#39; et Veo 3.1 qui domine la vidéo IA, ta semaine de veille est servie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>/* ==========================================================================
+   Agent de Veille IA Hebdomadaire — style &#34;magazine&#34; (web)
+   ========================================================================== */
+
+:root {
+  --bg: #f7f5f0;
+  --bg-card: #ffffff;
+  --ink: #1b1b1f;
+  --ink-soft: #52525b;
+  --accent: #6a3df5;
+  --accent-soft: #efe9ff;
+  --line: #e6e2d8;
+  --success: #0f8a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114;
+    --bg-card: #1a1a1f;
+    --ink: #f2f1ee;
+    --ink-soft: #a3a3ad;
+    --accent: #a78bfa;
+    --accent-soft: #241c3d;
+    --line: #2c2c33;
+    --success: #34d399;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: &#34;Inter&#34;, &#34;Segoe UI&#34;, system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: &#34;Fraunces&#34;, Georgia, &#34;Times New Roman&#34;, serif;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.6rem;
+}
+
+.site-header p {
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* --- Cartes d&#39;archive (index) ------------------------------------------ */
+
+.archive-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+.report-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.report-card .date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.report-card h2 {
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.report-card p {
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.report-card .links a {
+  font-weight: 600;
+  margin-right: 1.25rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 4rem 1rem;
+}
+
+/* --- Page d&#39;un rapport --------------------------------------------------- */
+
+.report-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.report-content h2 {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.report-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  color: var(--accent);
+}
+
+.report-content h4 {
+  font-size: 1.02rem;
+  margin-top: 1.4rem;
+}
+
+.report-content p { margin: 0.9rem 0; }
+
+.report-content ul, .report-content ol {
+  padding-left: 1.4rem;
+}
+
+.report-content li { margin: 0.35rem 0; }
+
+.report-content blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1.2rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+}
+
+.report-content blockquote p { margin: 0; }
+
+.report-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+
+.report-content th, .report-content td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+
+.report-content th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.report-content code {
+  background: var(--accent-soft);
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.88em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.pdf-badge {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.pdf-badge:hover { text-decoration: none; opacity: 0.9; }
+
+footer.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a class="back-link" href="../../index.html">&larr; Retour à l'archive</a>
+
+
+
+  <header>
+    <div class="date">22 novembre 2026</div>
+    <h1>L&#39;IA en mode tourmente : Anthropic en montagnes russes, Lemon Squeezy tire sa révérence, pis ChatGPT qui veut sonner plus humain</h1>
+    <p class="report-meta">Entre la mort annoncée de Lemon Squeezy, un nouveau GPT qui jure sonner &#39;moins robot&#39; et Veo 3.1 qui domine la vidéo IA, ta semaine de veille est servie.<br>Taux utilisés : 1 USD = 1.4334 CAD · 1 EUR = 1.5725 CAD</p>
+  </header>
+
+
+  <div class="report-content">
+    <h2 id="section-1-etat-de-la-situation">SECTION 1 : ÉTAT DE LA SITUATION</h2>
+<h3 id="1-creation-multimedia-video-image-audio">1. Création Multimédia (Vidéo, Image &amp; Audio)</h3>
+<p><strong>Le topo :</strong> Les générateurs de vidéo par IA marchent avec des modèles dits « diffusion-transformer » — en gros, une recette qui transforme ton texte en une suite d'images cohérentes, frame par frame, un peu comme si tu demandais à un peintre de faire 24 toiles par seconde qui se suivent logiquement. La grande bataille en ce moment, c'est l'<strong>audio natif</strong> : est-ce que le modèle génère le son (dialogues, bruitages, ambiance) <em>en même temps</em> que l'image, ou est-ce que tu dois rajouter le son après coup comme dans le bon vieux montage ? Google Veo et Kling ont le son natif; Runway, lui, mise plutôt sur le contrôle créatif et te laisse ajouter l'audio toi-même après.</p>
+<p>Autre tendance : les plateformes se transforment en véritables « studios » tout-en-un (image, vidéo ET audio dans la même interface) plutôt que des outils à usage unique. Pika et Adobe Firefly en sont de bons exemples.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Pourquoi il se démarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>Google Veo 3.1 (Flow)</strong></td>
+<td>Le plus réaliste physiquement (lumière, tissu, eau) et le seul avec un audio natif vraiment convaincant, dialogues compris</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>Kling 3.0</strong></td>
+<td>Meilleur pour les personnages et le mouvement humain fluide, jusqu'à 15 secondes en 4K</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>Runway Gen-4.5</strong></td>
+<td>Le meilleur atelier pour générer ET monter au même endroit, prisé des pros du cinéma</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Palier d'entrée</th>
+<th>Prix CAD/mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Veo 3.1 (Google AI Plus)</td>
+<td>7,99 $ US</td>
+<td><strong>11,46 $ CAD</strong></td>
+</tr>
+<tr>
+<td>Kling 3.0 (Standard)</td>
+<td>6,99 $ US</td>
+<td><strong>10,02 $ CAD</strong></td>
+</tr>
+<tr>
+<td>Runway Gen-4.5</td>
+<td>~14 €</td>
+<td><strong>22,02 $ CAD</strong></td>
+</tr>
+<tr>
+<td>Pika 2.5</td>
+<td>7 €</td>
+<td><strong>11,01 $ CAD</strong></td>
+</tr>
+<tr>
+<td>Luma Ray 3</td>
+<td>~27 €</td>
+<td><strong>42,46 $ CAD</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-developpement-codage-integrations">2. Développement, Codage &amp; Intégrations</h3>
+<p><strong>Le topo :</strong> On est passé des simples « auto-complétions » de code (comme GitHub Copilot à ses débuts) à des <strong>agents de codage</strong> qui comprennent tout ton projet, écrivent du code sur plusieurs fichiers, lancent des tests et même font des commits Git tout seuls. Il existe trois familles : les assistants intégrés à l'éditeur (ex. Copilot), les IDE repensés autour de l'IA (ex. Cursor — un IDE, c'est ton environnement de programmation, comme un gros Word pour écrire du code), et les agents qui tournent dans le terminal (ex. Claude Code), une fenêtre en ligne de commande pour les développeurs plus techniques. Le <strong>MCP</strong> (Model Context Protocol) revient souvent : c'est une sorte de langage commun qui permet à différents agents IA de se brancher sur les mêmes outils et bases de code.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Pourquoi il se démarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>Cursor</strong></td>
+<td>L'IDE IA-natif le plus populaire, plus d'un million de développeurs l'utilisent au quotidien</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>Claude Code</strong></td>
+<td>Le meilleur pour les bases de code complexes, raisonnement profond en ligne de commande</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>GitHub Copilot</strong></td>
+<td>Le meilleur rapport simplicité/prix pour rester dans son environnement habituel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Palier</th>
+<th>Prix CAD/mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor</td>
+<td>Gratuit / Pro / Pro+ / Ultra</td>
+<td>Gratuit / <strong>28,67 $</strong> / <strong>86,00 $</strong> / <strong>286,68 $</strong></td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Via Claude Max</td>
+<td><strong>143,34 $</strong></td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Via Claude Team (par siège)</td>
+<td><strong>43,00 $</strong></td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>Individuel</td>
+<td><strong>14,33 $ à 107,51 $</strong></td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td>Pro</td>
+<td><strong>35,84 $</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-plateformes-de-paiement-merchant-of-record-pour-vendre-par-abonnement">3. Plateformes de Paiement (Merchant of Record) pour vendre par abonnement</h3>
+<p><strong>Le topo (rappel pour les non-techniques) :</strong> Un <strong>Merchant of Record (MOR)</strong> — littéralement « marchand officiel » — c'est une plateforme qui devient le vendeur légal de tes produits à ta place. Concrètement, c'est elle qui facture tes clients partout dans le monde ET qui calcule, collecte et remet les taxes de vente (TVA en Europe, taxes d'État aux États-Unis, etc.) aux bons gouvernements. C'est très différent d'un simple processeur de paiement comme Stripe de base : lui, il fait juste passer l'argent, mais TOI tu restes responsable de gérer les taxes partout où tu as des clients — un vrai casse-tête si tu vends à l'international.</p>
+<p><strong>Grosse nouvelle à connaître avant de choisir :</strong> Lemon Squeezy, une des plateformes les plus populaires chez les petits développeurs, est en train de fermer boutique (voir Section 2). Si tu magasinais cette option, change de direction tout de suite.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Plateforme</th>
+<th>Bonne pour l'abonnement ?</th>
+<th>Simple à utiliser ?</th>
+<th>Gère les taxes ?</th>
+<th>Interface en français ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Paddle</strong></td>
+<td>Oui, outils d'abonnement très complets (essais, mises à niveau, pauses)</td>
+<td>Oui, inscription libre-service</td>
+<td>Oui, TVA/TPS automatique dans 200+ pays</td>
+<td>Partiel — checkout client multilingue, tableau de bord admin en anglais seulement</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>FastSpring</strong></td>
+<td>Oui, couvre abonnements et achats uniques</td>
+<td>Moyen — mise en place plus corporative</td>
+<td>Oui, couverture mondiale reconnue (200+ marchés)</td>
+<td>Partiel — pages de paiement localisables, back-office en anglais</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Dodo Payments</strong></td>
+<td>Oui, pensé pour SaaS et IA dès le départ</td>
+<td>Oui, orienté développeurs/API simple</td>
+<td>Oui, 150+ pays</td>
+<td>Non confirmé — plateforme encore jeune (fondée en 2024), documentation majoritairement en anglais</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Plateforme</th>
+<th>Frais par transaction (CAD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paddle</td>
+<td>5 % + <strong>0,72 $ CAD</strong> (5 % + 0,50 $ US), aucun frais mensuel</td>
+</tr>
+<tr>
+<td>FastSpring</td>
+<td>Pourcentage négocié selon volume (sur demande)</td>
+</tr>
+<tr>
+<td>Dodo Payments</td>
+<td>4 % + <strong>0,57 $ CAD</strong> (4 % + 0,40 $ US)</td>
+</tr>
+<tr>
+<td>Creem (alternative légère)</td>
+<td>3,9 % + <strong>0,57 $ CAD</strong> (3,9 % + 0,40 $ US)</td>
+</tr>
+<tr>
+<td>Stripe + Stripe Tax (PSP, pas un vrai MOR)</td>
+<td>2,9 % + <strong>0,43 $ CAD</strong>, + taxe à gérer toi-même</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notre recommandation pour un francophone unilingue :</strong> Paddle reste le choix le plus sûr en 2026 — c'est le MOR le plus établi spécifiquement pour le SaaS, avec une gestion de taxes béton et un parcours client qui s'affiche déjà en français pour tes acheteurs. Par contre, prépare-toi à naviguer le panneau d'administration en anglais (ou avec Google Traduction ouvert dans un autre onglet) : aucune de ces plateformes n'offre encore un back-office 100 % traduit en français pour l'instant.</p>
+<hr />
+<h3 id="4-productivite-recherche">4. Productivité &amp; Recherche</h3>
+<p><strong>Le topo :</strong> Deux catégories à distinguer. D'un côté, les <strong>assistants généralistes</strong> (ChatGPT, Claude) qui répondent à peu près à tout. De l'autre, les <strong>outils de recherche web en temps réel</strong> comme Perplexity, qui vont chercher l'info sur Internet et citent leurs sources — contrairement à un chatbot classique qui peut « halluciner » (inventer des faits avec assurance). Le combo gagnant que tout le monde recommande : un assistant généraliste + Perplexity pour la recherche + NotebookLM (de Google) pour fouiller dans tes propres documents.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Pourquoi il se démarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>ChatGPT</strong></td>
+<td>Le généraliste le plus polyvalent, écriture, code, raisonnement</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>Claude</strong></td>
+<td>Le meilleur pour les documents longs et l'écriture nuancée</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>Perplexity</strong></td>
+<td>Le meilleur moteur de recherche IA avec sources citées</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Palier gratuit</th>
+<th>Prix CAD/mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT</td>
+<td>Oui</td>
+<td>Plus : <strong>28,67 $</strong> · Pro : <strong>143,34 $</strong></td>
+</tr>
+<tr>
+<td>Claude</td>
+<td>Oui</td>
+<td>Pro : <strong>24,37 $ à 28,67 $</strong> · Max : <strong>143,34 $</strong></td>
+</tr>
+<tr>
+<td>Perplexity</td>
+<td>Oui</td>
+<td>Pro : <strong>28,67 $</strong> · Max : <strong>286,68 $</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="5-agents-creation-dautomatisations">5. Agents &amp; Création d'automatisations</h3>
+<p><strong>Le topo :</strong> Un <strong>agent IA</strong>, contrairement à un simple chatbot, peut planifier des étapes, utiliser des outils (envoyer un courriel, lire une base de données) et agir de façon semi-autonome. L'<strong>automatisation sans code</strong> (no-code), elle, te permet de brancher des applications ensemble (genre « quand je reçois un courriel, crée une tâche dans Notion ») sans écrire une seule ligne de code, via des blocs visuels à glisser-déposer. La nuance importante en 2026 : dans un outil comme n8n, c'est TOI qui décides du déroulement et l'IA n'est qu'une étape du processus; dans une vraie plateforme d'agents, c'est le modèle d'IA lui-même qui décide quoi faire et dans quel ordre.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Pourquoi il se démarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>n8n</strong></td>
+<td>Open source, contrôle total sur tes données, 400+ intégrations</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>Zapier Central</strong></td>
+<td>La bibliothèque d'intégrations la plus profonde (6000+ applications)</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>Make.com</strong></td>
+<td>Le meilleur pour les automatisations complexes avec embranchements logiques</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Palier gratuit</th>
+<th>Prix CAD/mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n8n</td>
+<td>Oui, illimité en auto-hébergement</td>
+<td>Cloud : prix variable</td>
+</tr>
+<tr>
+<td>Zapier Central</td>
+<td>100 tâches/mois</td>
+<td><strong>42,99 $</strong></td>
+</tr>
+<tr>
+<td>Make.com</td>
+<td>1000 opérations/mois</td>
+<td><strong>12,90 $</strong></td>
+</tr>
+<tr>
+<td>Relevance AI</td>
+<td>Non</td>
+<td><strong>35,84 $</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="6-ecriture-naturelle-ecrire-comme-un-humain-prompts-cles">6. Écriture naturelle (« Écrire comme un humain ») &amp; Prompts clés</h3>
+<p><strong>Le topo :</strong> Les « humanizers » (outils d'humanisation) sont des logiciels qui reformulent un texte généré par IA pour qu'il échappe aux <strong>détecteurs d'IA</strong> (comme GPTZero ou Turnitin, utilisés entre autres par les écoles). Techniquement, ces outils jouent avec la « perplexité » et le « burstiness » du texte — en gros, le fait qu'un humain varie naturellement la longueur de ses phrases et utilise des mots moins prévisibles qu'une IA qui a tendance à écrire de façon trop lisse et régulière. Attention : la qualité d'écriture et le taux de contournement de la détection ne vont pas toujours de pair — certains outils gagnent en indétectabilité mais sacrifient la grammaire.</p>
+<p><strong>Palmarès du moment :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Outil</th>
+<th>Pourquoi il se démarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>Walter Writes</strong></td>
+<td>Le seul qui combine un bon contournement ET une écriture de qualité soutenue</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>GPTInf</strong></td>
+<td>Excellent contournement (90,7 %), mais qualité d'écriture moyenne</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>Quillbot</strong></td>
+<td>Le plus polyvalent (paraphrase + grammaire + humanisation dans un seul outil)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tarifs (convertis en CAD) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Prix CAD/mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WriteHuman (Basic/Pro/Ultra)</td>
+<td><strong>25,80 $ / 38,70 $ / 68,80 $</strong></td>
+</tr>
+<tr>
+<td>Undetectable Humanizer (offre à vie)</td>
+<td><strong>40,09 $ CAD</strong> (une seule fois)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prompts clés pour écrire naturellement (à copier-coller) :</strong></p>
+<blockquote>
+<p>« Réécris ce texte comme si tu me l'expliquais de vive voix à un ami, avec des phrases de longueurs variées, quelques hésitations naturelles, et sans les transitions typiques d'une IA comme 'de plus' ou 'en conclusion'. »</p>
+<p>« Varie la longueur de tes phrases volontairement : alterne entre des phrases courtes et percutantes et des phrases plus longues et nuancées, comme le ferait un vrai rédacteur humain. »</p>
+<p>« Évite absolument les structures en trois points parfaitement symétriques et les formules creuses comme 'il est important de noter que'. Écris avec de la personnalité, quitte à être un peu imparfait. »</p>
+</blockquote>
+<hr />
+<h3 id="7-actualites-tendances-etat-de-la-situation">7. Actualités, Tendances &amp; État de la situation</h3>
+<p><strong>Le topo :</strong> 2026 marque un tournant : on passe de la phase « wow, regarde ce que l'IA peut faire » (les fameux projets pilotes ou « proof of concept ») à la phase « ça doit vraiment rapporter de l'argent ou économiser du temps, sinon on l'enlève ». En parallèle, un débat fait rage sur l'existence d'une <strong>bulle spéculative</strong> dans l'IA — les investissements ont atteint 202,3 milliards de dollars US en 2025, soit la moitié de tout le capital-risque mondial, une concentration jamais vue dans l'histoire de la tech. L'<strong>IA agentique</strong> (des IA qui agissent de façon autonome plutôt que de juste répondre à des questions) et l'<strong>IA verticale</strong> (des IA ultra-spécialisées pour un secteur précis, plutôt que des outils génériques) sont les deux grandes tendances de fond à suivre.</p>
+<p><strong>Palmarès du moment — Top 3 tendances à surveiller :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rang</th>
+<th>Tendance</th>
+<th>Pourquoi c'est important</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🥇 1</td>
+<td><strong>L'IA agentique en entreprise</strong></td>
+<td>Les entreprises arrêtent d'acheter des chatbots génériques et construisent des systèmes qui font vraiment une partie du travail</td>
+</tr>
+<tr>
+<td>🥈 2</td>
+<td><strong>La question de la bulle financière</strong></td>
+<td>Des valorisations vertigineuses (OpenAI visé à 830 G$ US) créent une nervosité boursière réelle, comme on l'a vu cette semaine</td>
+</tr>
+<tr>
+<td>🥉 3</td>
+<td><strong>La gouvernance des agents IA</strong></td>
+<td>Microsoft, IBM et Okta se lancent tous dans des outils pour surveiller « qui fait quoi » quand des agents IA travaillent sans supervision directe</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="section-2-nouveautes-de-la-semaine">SECTION 2 : NOUVEAUTÉS DE LA SEMAINE</h2>
+<h3 id="1-creation-multimedia-video-image-audio_1">1. Création Multimédia (Vidéo, Image &amp; Audio)</h3>
+<ul>
+<li><strong>Alibaba lance HappyHorse 1.1</strong> : une mise à jour majeure de son modèle vidéo, disponible avec accès API complet et une rabais de 40 % pendant deux semaines pour célébrer le lancement. Le modèle traite texte, image, vidéo et audio dans une seule séquence (pas besoin d'outils tiers pour synchroniser le son), et grimpe en 2ᵉ place du classement indépendant Artificial Analysis Video Arena.</li>
+<li><strong>Black Forest Labs sort FLUX 3 Video</strong> en disponibilité générale : des clips Full HD jusqu'à 20 secondes, avec synchronisation labiale (les lèvres bougent en phase avec les paroles) dans plus de 14 langues, et même du texte lisible incrusté directement dans les scènes — un vrai défi technique que peu de concurrents maîtrisent.</li>
+<li><strong>Adobe transforme Firefly en studio créatif complet</strong> : image, vidéo, audio et supports graphiques, le tout dans une seule plateforme avec un agent créatif intégré.</li>
+<li><strong>TikTok lance un vérificateur public</strong> pour savoir si une image, vidéo ou fichier audio a été généré par IA — accessible à tout le monde, mais avec des limites à connaître avant de s'y fier à 100 %.</li>
+<li><strong>Higgsfield (IA vidéo)</strong> a annoncé 1,35 milliard $ US de revenus pour le seul mois d'octobre 2026, environ dix-huit mois après son lancement — preuve que la vidéo IA est devenue un vrai business, pas juste un gadget.</li>
+</ul>
+<h3 id="2-developpement-codage-integrations_1">2. Développement, Codage &amp; Intégrations</h3>
+<ul>
+<li><strong>JetBrains</strong> déploie des mises à jour pour son assistant AI et son agent Junie, qui s'intègrent directement dans les IDE JetBrains (IntelliJ, PyCharm, WebStorm) avec une compréhension approfondie du contexte du projet.</li>
+<li><strong>AgentBridge</strong>, un nouveau plugin open source pour IntelliJ, donne un accès complet aux agents IA (Claude, Codex) aux outils natifs de l'IDE — navigation du code, refactorisation, débogueur — sans que rien ne se passe « dans le dos » du développeur.</li>
+<li><strong>Kotlin (JetBrains)</strong> publie une documentation officielle sur l'intégration des agents IA dans son écosystème, confirmant le support de Junie, Claude Code et OpenAI Codex via un protocole commun.</li>
+<li>Un comparatif détaillé publié cette semaine positionne <strong>Claude Opus 5.5</strong> comme le modèle de référence actuel pour le codage agentique, avec un coût d'exécution réduit de 40 % par rapport à Opus 5 — une bonne nouvelle pour les factures de ceux qui codent avec l'IA à temps plein.</li>
+</ul>
+<h3 id="3-plateformes-de-paiement-merchant-of-record">3. Plateformes de Paiement (Merchant of Record)</h3>
+<ul>
+<li>🚨 <strong>Lemon Squeezy ferme ses portes.</strong> Paddle (son concurrent direct) a confirmé publiquement cette semaine que « beaucoup de vendeurs choisissent un nouveau MOR pour la première fois en des années » suite à cette fermeture. Si tu utilisais Lemon Squeezy pour vendre ton application par abonnement, <strong>c'est le moment de migrer</strong> — ne niaise pas trop longtemps, les transferts de MOR peuvent être délicats pour tes abonnements actifs.</li>
+<li><strong>Dodo Payments</strong> continue de gagner en popularité chez les créateurs de SaaS et d'outils IA qui veulent monétiser dès le jour un, avec un modèle pay-as-you-go (paiement à l'usage) combinant abonnements, crédits et facturation à l'usage.</li>
+<li>Un nouvel acteur, <strong>AgentaOS</strong>, se positionne spécifiquement pour les agents IA et les pays que Stripe ne couvre pas, sans exiger de compagnie enregistrée à l'étranger — intéressant si tu es travailleur autonome au Québec sans structure corporative complexe.</li>
+</ul>
+<h3 id="4-productivite-recherche_1">4. Productivité &amp; Recherche</h3>
+<ul>
+<li><strong>Microsoft Ignite 2026</strong> a été la grosse conférence de la semaine : lancement de <strong>Copilot Workspaces</strong>, un espace collaboratif « multijoueur » où humains et agents IA bâtissent des documents ensemble, plus un centre de commande nommé <strong>Today</strong> qui regroupe courriels, calendrier, réunions et tâches en un seul coup d'œil (actuellement en prévisualisation privée dans Outlook).</li>
+<li><strong>Autopilot</strong>, le nouvel agent personnel de Microsoft, peut surveiller des canaux Teams, suivre des courriels et gérer un projet sans attendre d'instructions précises — un concept similaire à « Dots » d'OpenAI mais pensé pour le milieu professionnel.</li>
+<li>Un comparatif publié cette semaine positionne <strong>Perplexity (20 $ US/mois, soit 28,67 $ CAD)</strong> devant Mistral Vibe (anciennement Le Chat) et le Mode IA de Google dans la bataille des moteurs de réponses — leur offre la plus chère, Perplexity Max, grimpe à 200 $ US/mois (286,68 $ CAD).</li>
+<li>Un témoignage viral cette semaine (Futura-Sciences) rappelle une limite importante : les assistants IA de planification sont d'excellents organisateurs d'horaire, mais ne sont <strong>pas des coachs personnels</strong> — ils ne voient ni ta fatigue accumulée, ni ton état émotionnel réel du moment.</li>
+</ul>
+<h3 id="5-agents-creation-dautomatisations_1">5. Agents &amp; Création d'automatisations</h3>
+<ul>
+<li><strong>Microsoft Ignite</strong> dévoile <strong>Agent 365</strong>, un « plan de contrôle » pensé pour étendre l'identité, la sécurité et la supervision des systèmes d'entreprise aux agents IA — Microsoft traite désormais le déploiement d'agents comme un problème de gouvernance, pas juste de choix de modèle.</li>
+<li><strong>Replit lance Missions</strong> : un système qui coordonne plusieurs agents IA en parallèle pour planifier, bâtir, tester et itérer vers un objectif défini par l'utilisateur, avec limites de dépenses et points d'approbation humaine intégrés. Replit affirme que ses agents ont bâti une plateforme interne de surveillance d'applications en deux jours pour 3000 $.</li>
+<li><strong>ElevenLabs lance ElevenAI</strong> en préversion : transcription de réunions, contexte de réunion consultable, dictée dans plus de 90 langues, et actions de suivi pilotées par agent (comme rédiger un courriel à partir des notes de réunion).</li>
+<li><strong>IBM</strong> a dévoilé une solution d'identité et de contrôle pour les agents IA, qui permet aux entreprises de savoir qui est responsable de chaque agent, ce à quoi il a accès et ce qu'il a fait — une réponse directe à l'angoisse grandissante autour des agents qui agissent « sans supervision ».</li>
+</ul>
+<h3 id="6-ecriture-naturelle-prompts-cles">6. Écriture naturelle &amp; Prompts clés</h3>
+<ul>
+<li>🔥 <strong>OpenAI lance GPT-6.2 Astra et GPT-6.2 Sol</strong>, deux nouveaux modèles qui réduisent l'écart avec Claude. La promesse marketing principale : des textes générés dans ChatGPT qui <strong>« semblent plus naturels, plus humains »</strong> — directement dans la mire de ce thème. Selon le classement Artificial Analysis, GPT-6.2 Astra se rapproche de Claude Fable 5.2 (le modèle le plus puissant du marché actuellement), tout en étant 20 % moins cher que son prédécesseur.</li>
+<li><strong>Quillbot</strong> continue de pousser son extension Chrome tout-en-un (grammaire, paraphrase, humanisation, détection IA) directement intégrée dans n'importe quel champ de texte sur le web.</li>
+<li>Une offre à vie pour <strong>Undetectable Humanizer</strong> (40,09 $ CAD, paiement unique) circule cette semaine dans les cercles entrepreneuriaux comme alternative économique aux abonnements mensuels.</li>
+</ul>
+<h3 id="7-actualites-tendances-etat-de-la-situation_1">7. Actualités, Tendances &amp; État de la situation</h3>
+<ul>
+<li>📉 <strong>Anthropic tangue à Wall Street.</strong> Après une entrée en bourse spectaculaire avec une levée record de 91,6 milliards $ US, l'action du créateur de Claude a grimpé de 17 % le premier jour... pour chuter de près de 12 % dès sa deuxième séance, se rapprochant dangereusement de son prix d'introduction. Les analystes pointent la dépendance d'Anthropic envers un vaste écosystème de fournisseurs de puces et d'infrastructure cloud comme facteur de nervosité.</li>
+<li><strong>Mistral AI</strong> (l'entreprise française) confirme avoir complété une levée de 3 milliards d'euros en septembre — la plus grosse levée de fonds d'une entreprise technologique européenne à ce jour.</li>
+<li>Trois grosses levées de fonds cette semaine : <strong>Model ML</strong> (agents IA pour banquiers) lève 250 millions $ US (série B, valorisation 1,5 G$); <strong>Genesis AI</strong> (robotique, Paris/Californie) lève 500 millions $ US (série A, valorisation 3,5 G$); <strong>Remanence</strong> (Paris, fondée par d'anciens de H Company) lève 30 millions $ US en amorçage pour entraîner des modèles sur les traces d'exécution d'agents IA.</li>
+<li>Selon une étude TCS citée cette semaine, <strong>94 % des dirigeants français</strong> jugent désormais essentielle l'indépendance de leur entreprise vis-à-vis des grands fournisseurs de modèles IA — un signal clair que la souveraineté technologique devient une préoccupation de conseil d'administration, pas juste un sujet de geeks.</li>
+</ul>
+  </div>
+
+
+  <a class="pdf-badge" href="rapport.pdf">📄 Télécharger le PDF</a>
+</div>
+<footer class="site-footer">Généré automatiquement chaque dimanche par l'Agent de Veille IA Hebdomadaire.</footer>
+
+</body>
+</html>
